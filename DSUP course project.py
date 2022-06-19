@@ -41,7 +41,7 @@ while True:
         # Both Hands are present in image(frame)
         if len(results.multi_handedness) == 2:
             # Display 'Both Hands' on the image
-            cv2.putText(img, 'Both Hands', (250, 50),cv2.FONT_HERSHEY_COMPLEX, 0.9,(0,0 , 255), 2)
+            cv2.putText(img, 'Both Hands', (250, 50),cv2.FONT_ITALIC, 0.9,(0,0 , 255), 2)
 
         # If any hand present
         else:
@@ -53,7 +53,9 @@ while True:
 
                 if label == 'Right':
                     # Display 'Left Hand' on left side of window
-                    cv2.putText(img, 'BRIGHTNESS', (20, 50),cv2.FONT_HERSHEY_COMPLEX, 0.9,(0, 0, 255), 2)
+                    cv2.putText(img, 'BRIGHTNESS', (20, 50),cv2.FONT_HERSHEY_COMPLEX, 0.9,(250, 50, 250), 2)
+                    cv2.putText(img, 'RIGHT', (500, 450),cv2.FONT_HERSHEY_COMPLEX, 0.9,(0, 0, 200), 2)
+
                     if results.multi_hand_landmarks:
                         for handlandmark in results.multi_hand_landmarks:
                             for id, lm in enumerate(handlandmark.landmark):
@@ -82,13 +84,15 @@ while True:
 
                             cv2.rectangle(img, (50, 150), (85, 400), (0, 0, 200))
                             cv2.rectangle(img, (50, int(briBar)), (85, 400), (255, 0, 0), cv2.FILLED)
-                            cv2.putText(img, f'{int(briPer)} %', (48, 440), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 200), 3)
-                            cv2.putText(img, "DSUP", (425, 30), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 200), 3)
-                            cv2.putText(img, "______", (422, 39), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 3)
+                            cv2.putText(img, f'{int(briPer)} %', (40, 440), cv2.FONT_ITALIC, 1, (50, 250, 200), 3)
+                            cv2.putText(img, "DSUP", (500, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (50, 250, 200), 3)
+                            cv2.putText(img, "_____", (500, 58), cv2.FONT_HERSHEY_COMPLEX, 1, (250, 50, 250), 3)
 
                 if label == 'Left':
                     # Display 'Left Hand' on left side of window
-                    cv2.putText(img, 'VOLUME', (20, 50),cv2.FONT_HERSHEY_COMPLEX,0.9, (0, 0, 255), 2)
+                    cv2.putText(img, 'VOLUME', (20, 50),cv2.FONT_HERSHEY_COMPLEX,0.9, (250, 50, 250), 2)
+                    cv2.putText(img, 'LEFT', (500, 450),cv2.FONT_HERSHEY_COMPLEX, 0.9,(0, 0, 200), 2)
+
                     if results.multi_hand_landmarks:
                         for hand_in_frame in results.multi_hand_landmarks:
                             mpDraw.draw_landmarks(img, hand_in_frame, mpHands.HAND_CONNECTIONS)
@@ -112,9 +116,9 @@ while True:
 
                             cv2.rectangle(img, (50, 150), (85, 400), (0, 0, 200))
                             cv2.rectangle(img, (50, int(volBar)), (85, 400), (255, 0, 0), cv2.FILLED)
-                            cv2.putText(img, f'{int(volPer)} %', (48, 440), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 200), 3)
-                            cv2.putText(img, "DSUP", (425, 30), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 200), 3)
-                            cv2.putText(img, "______", (422, 39), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 3)
+                            cv2.putText(img, f'{int(volPer)} %', (48, 440), cv2.FONT_ITALIC, 1, (50, 250, 200), 3)
+                            cv2.putText(img, "DSUP", (500, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (50, 250, 200), 3)
+                            cv2.putText(img, "_____", (500, 58), cv2.FONT_HERSHEY_COMPLEX, 1, (250, 50, 250), 3)
                             vc.SetMasterVolumeLevel(vol, None)
 
 
